@@ -219,28 +219,21 @@
                      </div>
                 </div>
                 
-                                 <!-- Video de Instalación -->
-                 <div class="bg-white p-8 rounded-xl shadow-lg">
-                     <div class="text-center">
-                         <h3 class="text-xl font-semibold mb-4">Video Tutorial de Instalación</h3>
-                         <div class="w-full rounded-lg overflow-hidden mb-4">
-                             <video 
-                                 class="w-full h-auto max-h-96 object-cover rounded-lg" 
-                                 controls 
-                                 autoplay 
-                                 muted 
-                                 loop
-                                 preload="metadata">
-                                 <source src="./video/0825.mov" type="video/quicktime">
-                                 <source src="./video/0825.mov" type="video/mp4">
-                                 Tu navegador no soporta el elemento de video.
-                             </video>
-                         </div>
-                         <p class="text-sm text-gray-600">
-                             📹 Video tutorial paso a paso para instalar la extensión
-                         </p>
-                     </div>
-                 </div>
+                <!-- Image Placeholder -->
+                <div class="bg-white p-8 rounded-xl shadow-lg">
+                    <div class="text-center">
+                        <div class="w-full h-64 bg-gray-100 rounded-lg flex items-center justify-center mb-4">
+                            <div class="text-center">
+                                <i data-lucide="image" class="w-16 h-16 mx-auto mb-4 text-gray-400"></i>
+                                <p class="text-gray-500">Aquí irán las imágenes de instalación</p>
+                                <p class="text-sm text-gray-400">(Pega las capturas de pantalla aquí)</p>
+                            </div>
+                        </div>
+                        <p class="text-sm text-gray-600">
+                            📸 Espacio reservado para capturas de pantalla del proceso de instalación
+                        </p>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -274,7 +267,7 @@
             btn.addEventListener('click', function() {
                 // Create a link element
                 const link = document.createElement('a');
-                link.href = '/stand_up_reminder_fixed.zip';
+                link.href = './stand_up_reminder_fixed.zip';
                 link.download = 'stand_up_reminder_fixed.zip';
                 
                 // Append to body, click, and remove
