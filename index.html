@@ -1,6 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-S845Q8V7WY"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-S845Q8V7WY');
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Stand Up Reminder - Your Digital Health Companion</title>
@@ -73,6 +82,7 @@
     </style>
 </head>
 <body class="bg-gray-50 text-gray-900">
+
     <!-- Language Switcher -->
     <div class="fixed top-4 right-4 z-50">
         <div class="flex bg-white rounded-lg shadow-lg p-1">
@@ -349,6 +359,15 @@
         // Download functionality
         document.querySelectorAll('.download-btn').forEach(btn => {
             btn.addEventListener('click', function() {
+                // Track download click with Google Analytics 4
+                if (typeof gtag !== 'undefined') {
+                    gtag('event', 'download_click', {
+                        'download_type': 'extension_zip',
+                        'button_text': this.textContent.trim(),
+                        'timestamp': new Date().toISOString()
+                    });
+                }
+                
                 // Create a link element
                 const link = document.createElement('a');
                 // Enlace directo al ZIP en Google Drive
