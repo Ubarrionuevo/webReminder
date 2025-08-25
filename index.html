@@ -219,18 +219,27 @@
                      </div>
                 </div>
                 
-                <!-- Image Placeholder -->
+                <!-- Video Tutorial -->
                 <div class="bg-white p-8 rounded-xl shadow-lg">
                     <div class="text-center">
-                        <div class="w-full h-64 bg-gray-100 rounded-lg flex items-center justify-center mb-4">
-                            <div class="text-center">
-                                <i data-lucide="image" class="w-16 h-16 mx-auto mb-4 text-gray-400"></i>
-                                <p class="text-gray-500">Aquí irán las imágenes de instalación</p>
-                                <p class="text-sm text-gray-400">(Pega las capturas de pantalla aquí)</p>
-                            </div>
+                        <h3 class="text-2xl font-bold mb-6 text-gray-800">Video Tutorial de Instalación</h3>
+                        <div class="w-full rounded-lg overflow-hidden mb-4">
+                            <video 
+                                controls 
+                                class="w-full h-auto max-h-96 rounded-lg shadow-lg"
+                                poster="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='300' viewBox='0 0 400 300'%3E%3Crect width='400' height='300' fill='%23f3f4f6'/%3E%3Ctext x='50%25' y='50%25' text-anchor='middle' dy='.3em' fill='%236b7280' font-family='Inter, sans-serif' font-size='16'%3EVideo Tutorial%3C/text%3E%3C/svg%3E"
+                            >
+                                <source src="./video/0825.mov" type="video/quicktime">
+                                <source src="./video/0825.mov" type="video/mp4">
+                                Tu navegador no soporta el elemento de video.
+                            </video>
                         </div>
-                        <p class="text-sm text-gray-600">
-                            📸 Espacio reservado para capturas de pantalla del proceso de instalación
+                        <div class="flex items-center justify-center gap-2 text-sm text-gray-600">
+                            <i data-lucide="play-circle" class="w-4 h-4"></i>
+                            <span>Video tutorial paso a paso de la instalación</span>
+                        </div>
+                        <p class="text-sm text-gray-500 mt-2">
+                            📹 Sigue el video para una instalación guiada y sin complicaciones
                         </p>
                     </div>
                 </div>
