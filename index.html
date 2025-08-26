@@ -300,13 +300,126 @@
             <p class="text-gray-400 mb-6 max-w-md mx-auto" data-en="Your digital companion to maintain a healthy posture while working in front of the computer." data-es="Tu compañero digital para mantener una postura saludable mientras trabajas frente a la computadora.">
                 Your digital companion to maintain a healthy posture while working in front of the computer.
             </p>
-            <div class="flex justify-center gap-6 text-sm text-gray-400">
+            <div class="flex justify-center gap-6 text-sm text-gray-400 mb-4">
                 <span data-en="© 2025 Stand Up Reminder" data-es="© 2025 Stand Up Reminder">© 2025 Stand Up Reminder</span>
                 <span>•</span>
                 <span data-en="Designed for office workers" data-es="Diseñado para trabajadores de oficina">Designed for office workers</span>
             </div>
+            <button id="feedbackBtn" class="inline-flex items-center gap-2 px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors duration-200 text-sm">
+                <i data-lucide="message-circle" class="w-4 h-4"></i>
+                <span data-en="Give us feedback" data-es="Danos tu opinión">Give us feedback</span>
+            </button>
         </div>
     </footer>
+
+    <!-- Feedback Modal -->
+    <div id="feedbackModal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-2xl shadow-2xl max-w-md w-full mx-4 transform transition-all duration-300 scale-95 opacity-0" id="modalContent">
+            <!-- Modal Header -->
+            <div class="flex items-center justify-between p-6 border-b border-gray-100">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center">
+                        <i data-lucide="message-circle" class="w-5 h-5 text-blue-600"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-semibold text-gray-900" data-en="We'd love your feedback!" data-es="¡Nos encantaría tu opinión!">We'd love your feedback!</h3>
+                        <p class="text-sm text-gray-500" data-en="Help us improve your experience" data-es="Ayúdanos a mejorar tu experiencia">Help us improve your experience</p>
+                    </div>
+                </div>
+                <button id="closeModal" class="text-gray-400 hover:text-gray-600 transition-colors duration-200">
+                    <i data-lucide="x" class="w-5 h-5"></i>
+                </button>
+            </div>
+
+            <!-- Modal Body -->
+            <form id="feedbackForm" action="https://formspree.io/f/xldweane" method="POST" class="p-6 space-y-4">
+                <!-- Rating -->
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-3" data-en="How would you rate your experience?" data-es="¿Cómo calificarías tu experiencia?">How would you rate your experience?</label>
+                    <div class="flex gap-2 justify-center">
+                        <input type="radio" name="rating" value="1" id="star1" class="hidden">
+                        <label for="star1" class="text-2xl text-gray-300 hover:text-yellow-400 cursor-pointer transition-colors duration-200" data-rating="1">⭐</label>
+                        
+                        <input type="radio" name="rating" value="2" id="star2" class="hidden">
+                        <label for="star2" class="text-2xl text-gray-300 hover:text-yellow-400 cursor-pointer transition-colors duration-200" data-rating="2">⭐</label>
+                        
+                        <input type="radio" name="rating" value="3" id="star3" class="hidden">
+                        <label for="star3" class="text-2xl text-gray-300 hover:text-yellow-400 cursor-pointer transition-colors duration-200" data-rating="3">⭐</label>
+                        
+                        <input type="radio" name="rating" value="4" id="star4" class="hidden">
+                        <label for="star4" class="text-2xl text-gray-300 hover:text-yellow-400 cursor-pointer transition-colors duration-200" data-rating="4">⭐</label>
+                        
+                        <input type="radio" name="rating" value="5" id="star5" class="hidden">
+                        <label for="star5" class="text-2xl text-gray-300 hover:text-yellow-400 cursor-pointer transition-colors duration-200" data-rating="5">⭐</label>
+                    </div>
+                </div>
+
+                <!-- Feedback Type -->
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2" data-en="What type of feedback is this?" data-es="¿Qué tipo de opinión es esta?">What type of feedback is this?</label>
+                    <select name="feedbackType" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors duration-200">
+                        <option value="general" data-en="General feedback" data-es="Opinión general">General feedback</option>
+                        <option value="bug" data-en="Bug report" data-es="Reporte de error">Bug report</option>
+                        <option value="feature" data-en="Feature request" data-es="Solicitud de función">Feature request</option>
+                        <option value="improvement" data-en="Improvement suggestion" data-es="Sugerencia de mejora">Improvement suggestion</option>
+                    </select>
+                </div>
+
+                <!-- Message -->
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2" data-en="Tell us more (optional)" data-es="Cuéntanos más (opcional)">Tell us more (optional)</label>
+                    <textarea name="message" rows="3" placeholder="Share your thoughts, suggestions, or report any issues..." class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors duration-200 resize-none"></textarea>
+                </div>
+
+                <!-- Email (optional) -->
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2" data-en="Email (optional - for follow-up)" data-es="Email (opcional - para seguimiento)">Email (optional - for follow-up)</label>
+                    <input type="email" name="email" placeholder="your@email.com" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors duration-200">
+                </div>
+
+                <!-- Submit Button -->
+                <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 px-4 rounded-lg transition-colors duration-200 flex items-center justify-center gap-2">
+                    <i data-lucide="send" class="w-4 h-4"></i>
+                    <span data-en="Send Feedback" data-es="Enviar Opinión">Send Feedback</span>
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Success Message -->
+    <div id="successMessage" class="fixed top-4 right-4 bg-green-500 text-white px-6 py-3 rounded-lg shadow-lg z-50 hidden transform translate-x-full transition-all duration-300">
+        <div class="flex items-center gap-2">
+            <i data-lucide="check-circle" class="w-5 h-5"></i>
+            <span data-en="Thank you for your feedback!" data-es="¡Gracias por tu opinión!">Thank you for your feedback!</span>
+        </div>
+    </div>
+
+    <style>
+        /* Modal animations */
+        #feedbackModal.show #modalContent {
+            transform: scale(100%);
+            opacity: 1;
+        }
+
+        /* Star rating styles */
+        .star-rating label[data-rating]:hover ~ label[data-rating] {
+            color: #fbbf24;
+        }
+
+        .star-rating input:checked ~ label[data-rating] {
+            color: #fbbf24;
+        }
+
+        /* Form focus states */
+        input:focus, textarea:focus, select:focus {
+            outline: none;
+        }
+
+        /* Success message animation */
+        #successMessage.show {
+            transform: translateX(0);
+        }
+    </style>
 
     <script>
         // Initialize Lucide icons
@@ -389,6 +502,122 @@
                     behavior: 'smooth'
                 });
             });
+        });
+
+        // Feedback Modal Functionality
+        const feedbackModal = document.getElementById('feedbackModal');
+        const modalContent = document.getElementById('modalContent');
+        const feedbackBtn = document.getElementById('feedbackBtn');
+        const closeModal = document.getElementById('closeModal');
+        const feedbackForm = document.getElementById('feedbackForm');
+        const successMessage = document.getElementById('successMessage');
+
+        // Open modal
+        feedbackBtn.addEventListener('click', () => {
+            feedbackModal.classList.remove('hidden');
+            feedbackModal.classList.add('show');
+            document.body.style.overflow = 'hidden';
+        });
+
+        // Close modal
+        function closeFeedbackModal() {
+            feedbackModal.classList.remove('show');
+            setTimeout(() => {
+                feedbackModal.classList.add('hidden');
+                document.body.style.overflow = 'auto';
+            }, 300);
+        }
+
+        closeModal.addEventListener('click', closeFeedbackModal);
+        feedbackModal.addEventListener('click', (e) => {
+            if (e.target === feedbackModal) {
+                closeFeedbackModal();
+            }
+        });
+
+        // Star rating functionality
+        document.querySelectorAll('input[name="rating"]').forEach(input => {
+            input.addEventListener('change', function() {
+                const rating = this.value;
+                document.querySelectorAll('label[data-rating]').forEach((label, index) => {
+                    if (index < rating) {
+                        label.style.color = '#fbbf24';
+                    } else {
+                        label.style.color = '#d1d5db';
+                    }
+                });
+            });
+        });
+
+        // Form submission
+        feedbackForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const submitBtn = feedbackForm.querySelector('button[type="submit"]');
+            const originalText = submitBtn.innerHTML;
+            
+            // Show loading state
+            submitBtn.innerHTML = '<i data-lucide="loader-2" class="w-4 h-4 animate-spin"></i> Sending...';
+            submitBtn.disabled = true;
+            
+            try {
+                const formData = new FormData(feedbackForm);
+                const response = await fetch(feedbackForm.action, {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                });
+
+                if (response.ok) {
+                    // Show success message
+                    successMessage.classList.remove('hidden');
+                    successMessage.classList.add('show');
+                    
+                    // Reset form
+                    feedbackForm.reset();
+                    document.querySelectorAll('label[data-rating]').forEach(label => {
+                        label.style.color = '#d1d5db';
+                    });
+                    
+                    // Close modal after delay
+                    setTimeout(() => {
+                        closeFeedbackModal();
+                        setTimeout(() => {
+                            successMessage.classList.remove('show');
+                            setTimeout(() => {
+                                successMessage.classList.add('hidden');
+                            }, 300);
+                        }, 1000);
+                    }, 1500);
+                    
+                    // Track feedback submission with Google Analytics
+                    if (typeof gtag !== 'undefined') {
+                        gtag('event', 'feedback_submitted', {
+                            'feedback_type': formData.get('feedbackType'),
+                            'rating': formData.get('rating'),
+                            'timestamp': new Date().toISOString()
+                        });
+                    }
+                } else {
+                    throw new Error('Submission failed');
+                }
+            } catch (error) {
+                console.error('Error submitting feedback:', error);
+                alert('Sorry, there was an error submitting your feedback. Please try again.');
+            } finally {
+                // Reset button state
+                submitBtn.innerHTML = originalText;
+                submitBtn.disabled = false;
+            }
+        });
+
+        // Close modal with Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && !feedbackModal.classList.contains('hidden')) {
+                closeFeedbackModal();
+            }
         });
     </script>
 </body>
