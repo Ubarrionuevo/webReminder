@@ -108,30 +108,21 @@
                 <p class="text-xl text-gray-600 mb-8 max-w-2xl mx-auto" data-en="Your digital companion to maintain a healthy posture. Reminds you to stand up and stretch every hour while you work." data-es="Tu compañero digital para mantener una postura saludable. Te recuerda pararte y estirarte cada hora mientras trabajas.">
                     Your digital companion to maintain a healthy posture. Reminds you to stand up and stretch every hour while you work.
                 </p>
-                <div class="flex justify-center">
+                <div class="flex flex-col items-center gap-4">
                     <button class="download-btn text-white px-8 py-4 rounded-lg font-semibold text-lg flex items-center justify-center gap-2">
                         <i data-lucide="download" class="w-5 h-5"></i>
                         <span data-en="Download Extension" data-es="Descargar Extensión">Download Extension</span>
+                    </button>
+                    
+                    <!-- Feedback Button in Hero Section -->
+                    <button id="feedbackBtnHero" class="inline-flex items-center gap-2 px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition-colors duration-200">
+                        <i data-lucide="message-circle" class="w-4 h-4"></i>
+                        <span data-en="Give Feedback" data-es="Dar Opinión">Give Feedback</span>
                     </button>
                 </div>
             </div>
         </div>
     </header>
-
-    <!-- Feedback Call-to-Action Section -->
-    <section class="py-12 bg-gradient-to-r from-blue-50 to-indigo-50 border-b border-blue-100">
-        <div class="container mx-auto px-6 text-center">
-            <div class="max-w-2xl mx-auto">
-                <h2 class="text-3xl font-bold text-gray-900 mb-4" data-en="Help us improve your experience" data-es="Ayúdanos a mejorar tu experiencia">Help us improve your experience</h2>
-                <p class="text-lg text-gray-600 mb-6" data-en="Your feedback helps us make Stand Up Reminder even better for everyone" data-es="Tu opinión nos ayuda a hacer Stand Up Reminder aún mejor para todos">Your feedback helps us make Stand Up Reminder even better for everyone</p>
-                <button id="feedbackBtnTop" class="inline-flex items-center gap-3 px-8 py-4 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-xl transition-all duration-200 transform hover:scale-105 shadow-lg hover:shadow-xl">
-                    <i data-lucide="message-circle" class="w-5 h-5"></i>
-                    <span data-en="Share Your Feedback" data-es="Comparte tu Opinión">Share Your Feedback</span>
-                    <i data-lucide="arrow-right" class="w-4 h-4"></i>
-                </button>
-            </div>
-        </div>
-    </section>
 
     <!-- Features Section -->
     <section class="py-20 bg-white">
@@ -320,8 +311,125 @@
                 <span>•</span>
                 <span data-en="Designed for office workers" data-es="Diseñado para trabajadores de oficina">Designed for office workers</span>
             </div>
+            
+            <!-- Feedback Button -->
+            <div class="mt-8">
+                <button id="feedbackBtn" class="inline-flex items-center gap-2 px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition-colors duration-200">
+                    <i data-lucide="message-circle" class="w-4 h-4"></i>
+                    <span data-en="Give Feedback" data-es="Dar Opinión">Give Feedback</span>
+                </button>
+            </div>
         </div>
     </footer>
+
+    <!-- Feedback Modal -->
+    <div id="feedbackModal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-2xl shadow-2xl max-w-md w-full mx-4 transform transition-all duration-300 scale-95 opacity-0" id="modalContent">
+            <!-- Modal Header -->
+            <div class="flex items-center justify-between p-6 border-b border-gray-100">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center">
+                        <i data-lucide="message-circle" class="w-5 h-5 text-blue-600"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-semibold text-gray-900" data-en="We'd love your feedback!" data-es="¡Nos encantaría tu opinión!">We'd love your feedback!</h3>
+                        <p class="text-sm text-gray-500" data-en="Help us improve your experience" data-es="Ayúdanos a mejorar tu experiencia">Help us improve your experience</p>
+                    </div>
+                </div>
+                <button id="closeModal" class="text-gray-400 hover:text-gray-600 transition-colors duration-200">
+                    <i data-lucide="x" class="w-5 h-5"></i>
+                </button>
+            </div>
+
+            <!-- Modal Body -->
+            <form id="feedbackForm" action="https://formspree.io/f/xldweane" method="POST" class="p-6 space-y-4">
+                <!-- Rating -->
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-3" data-en="How would you rate your experience?" data-es="¿Cómo calificarías tu experiencia?">How would you rate your experience?</label>
+                    <div class="flex gap-2 justify-center star-rating">
+                        <input type="radio" name="rating" value="1" id="star1" class="hidden">
+                        <label for="star1" class="text-2xl text-gray-300 hover:text-yellow-400 cursor-pointer transition-colors duration-200" data-rating="1">⭐</label>
+                        
+                        <input type="radio" name="rating" value="2" id="star2" class="hidden">
+                        <label for="star2" class="text-2xl text-gray-300 hover:text-yellow-400 cursor-pointer transition-colors duration-200" data-rating="2">⭐</label>
+                        
+                        <input type="radio" name="rating" value="3" id="star3" class="hidden">
+                        <label for="star3" class="text-2xl text-gray-300 hover:text-yellow-400 cursor-pointer transition-colors duration-200" data-rating="3">⭐</label>
+                        
+                        <input type="radio" name="rating" value="4" id="star4" class="hidden">
+                        <label for="star4" class="text-2xl text-gray-300 hover:text-yellow-400 cursor-pointer transition-colors duration-200" data-rating="4">⭐</label>
+                        
+                        <input type="radio" name="rating" value="5" id="star5" class="hidden">
+                        <label for="star5" class="text-2xl text-gray-300 hover:text-yellow-400 cursor-pointer transition-colors duration-200" data-rating="5">⭐</label>
+                    </div>
+                </div>
+
+                <!-- Feedback Type -->
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2" data-en="What type of feedback is this?" data-es="¿Qué tipo de opinión es esta?">What type of feedback is this?</label>
+                    <select name="feedbackType" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors duration-200">
+                        <option value="general" data-en="General feedback" data-es="Opinión general">General feedback</option>
+                        <option value="bug" data-en="Bug report" data-es="Reporte de error">Bug report</option>
+                        <option value="feature" data-en="Feature request" data-es="Solicitud de función">Feature request</option>
+                        <option value="improvement" data-en="Improvement suggestion" data-es="Sugerencia de mejora">Improvement suggestion</option>
+                    </select>
+                </div>
+
+                <!-- Message -->
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2" data-en="Tell us more (optional)" data-es="Cuéntanos más (opcional)">Tell us more (optional)</label>
+                    <textarea name="message" rows="3" placeholder="Share your thoughts, suggestions, or report any issues..." class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors duration-200 resize-none"></textarea>
+                </div>
+
+                <!-- Email (optional) -->
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2" data-en="Email (optional - for follow-up)" data-es="Email (opcional - para seguimiento)">Email (optional - for follow-up)</label>
+                    <input type="email" name="email" placeholder="your@email.com" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors duration-200">
+                </div>
+
+                <!-- Submit Button -->
+                <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 px-4 rounded-lg transition-colors duration-200 flex items-center justify-center gap-2">
+                    <i data-lucide="send" class="w-4 h-4"></i>
+                    <span data-en="Send Feedback" data-es="Enviar Opinión">Send Feedback</span>
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Success Message -->
+    <div id="successMessage" class="fixed top-4 right-4 bg-green-500 text-white px-6 py-3 rounded-lg shadow-lg z-50 hidden transform translate-x-full transition-all duration-300">
+        <div class="flex items-center gap-2">
+            <i data-lucide="check-circle" class="w-5 h-5"></i>
+            <span data-en="Thank you for your feedback!" data-es="¡Gracias por tu opinión!">Thank you for your feedback!</span>
+        </div>
+    </div>
+
+    <style>
+        /* Modal animations */
+        #feedbackModal.show #modalContent {
+            transform: scale(100%);
+            opacity: 1;
+        }
+
+        /* Star rating styles */
+        .star-rating label[data-rating]:hover ~ label[data-rating] {
+            color: #fbbf24;
+        }
+
+        .star-rating input:checked ~ label[data-rating] {
+            color: #fbbf24;
+        }
+
+        /* Form focus states */
+        input:focus, textarea:focus, select:focus {
+            outline: none;
+        }
+
+        /* Success message animation */
+        #successMessage.show {
+            transform: translateX(0);
+        }
+    </style>
 
     <script>
         // Initialize Lucide icons
@@ -405,6 +513,151 @@
                 });
             });
         });
+
+        // Feedback Modal Functionality
+        const feedbackModal = document.getElementById('feedbackModal');
+        const modalContent = document.getElementById('modalContent');
+        const closeModal = document.getElementById('closeModal');
+        const feedbackBtn = document.getElementById('feedbackBtn');
+        const feedbackForm = document.getElementById('feedbackForm');
+        const successMessage = document.getElementById('successMessage');
+        
+        console.log('Modal elements found:', {
+            feedbackModal,
+            modalContent,
+            closeModal,
+            feedbackBtn,
+            feedbackBtnHero: document.getElementById('feedbackBtnHero'),
+            feedbackForm,
+            successMessage
+        });
+
+        // Function to open modal
+        function openModal() {
+            console.log('Opening modal...');
+            feedbackModal.classList.remove('hidden');
+            feedbackModal.classList.add('show');
+            modalContent.classList.add('show');
+            document.body.style.overflow = 'hidden';
+        }
+
+        // Function to close modal
+        function closeModalFunc() {
+            feedbackModal.classList.remove('show');
+            modalContent.classList.remove('show');
+            setTimeout(() => {
+                feedbackModal.classList.add('hidden');
+            }, 300);
+            document.body.style.overflow = 'auto';
+        }
+
+        // Event listeners for opening modal
+        console.log('Feedback button found:', feedbackBtn);
+        if (feedbackBtn) {
+            feedbackBtn.addEventListener('click', openModal);
+            console.log('Event listener added to feedback button');
+        }
+        
+        // Add event listener to hero feedback button
+        const feedbackBtnHero = document.getElementById('feedbackBtnHero');
+        console.log('Hero feedback button found:', feedbackBtnHero);
+        if (feedbackBtnHero) {
+            feedbackBtnHero.addEventListener('click', openModal);
+            console.log('Event listener added to hero feedback button');
+        }
+
+        // Event listeners for closing modal
+        if (closeModal) closeModal.addEventListener('click', closeModalFunc);
+        if (feedbackModal) feedbackModal.addEventListener('click', function(e) {
+            if (e.target === feedbackModal) closeModalFunc();
+        });
+
+        // Star rating functionality
+        document.querySelectorAll('.star-rating input').forEach(input => {
+            input.addEventListener('change', function() {
+                const rating = this.value;
+                document.querySelectorAll('.star-rating label').forEach(label => {
+                    if (label.dataset.rating <= rating) {
+                        label.style.color = '#fbbf24';
+                    } else {
+                        label.style.color = '#d1d5db';
+                    }
+                });
+            });
+        });
+
+        // Form submission
+        if (feedbackForm) {
+            feedbackForm.addEventListener('submit', async function(e) {
+                e.preventDefault();
+                
+                const submitBtn = this.querySelector('button[type="submit"]');
+                const originalText = submitBtn.innerHTML;
+                
+                // Show loading state
+                submitBtn.innerHTML = '<i data-lucide="loader-2" class="w-4 h-4 animate-spin"></i> Sending...';
+                submitBtn.disabled = true;
+                
+                try {
+                    const formData = new FormData(this);
+                    console.log('Enviando formulario a Formspree.io...');
+                    console.log('Datos del formulario:', Object.fromEntries(formData));
+                    
+                    const response = await fetch('https://formspree.io/f/xldweane', {
+                        method: 'POST',
+                        body: formData,
+                        headers: {
+                            'Accept': 'application/json',
+                            'Content-Type': 'application/x-www-form-urlencoded'
+                        }
+                    });
+                    
+                    console.log('Respuesta de Formspree.io:', response.status, response.statusText);
+                    
+                    if (response.ok) {
+                        // Show success message
+                        successMessage.classList.remove('hidden');
+                        successMessage.classList.add('show');
+                        
+                        // Track feedback submission with Google Analytics
+                        if (typeof gtag !== 'undefined') {
+                            gtag('event', 'feedback_submitted', {
+                                'feedback_type': formData.get('feedbackType'),
+                                'rating': formData.get('rating'),
+                                'timestamp': new Date().toISOString()
+                            });
+                        }
+                        
+                        // Reset form
+                        this.reset();
+                        document.querySelectorAll('.star-rating label').forEach(label => {
+                            label.style.color = '#d1d5db';
+                        });
+                        
+                        // Close modal after delay
+                        setTimeout(() => {
+                            closeModalFunc();
+                            setTimeout(() => {
+                                successMessage.classList.remove('show');
+                                setTimeout(() => {
+                                    successMessage.classList.add('hidden');
+                                }, 300);
+                            }, 2000);
+                        }, 1500);
+                        
+                    } else {
+                        throw new Error('Form submission failed');
+                    }
+                } catch (error) {
+                    console.error('Error submitting feedback:', error);
+                    alert('Sorry, there was an error submitting your feedback. Please try again.');
+                } finally {
+                    // Restore button state
+                    submitBtn.innerHTML = originalText;
+                    submitBtn.disabled = false;
+                }
+            });
+        }
     </script>
 </body>
 </html>
